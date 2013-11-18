@@ -218,10 +218,11 @@ imgkit.hotspot = (function () {
 
 	var getSpotMarkup = function () {
 
-		var $hotspotItems = $hotspots.clone(),
+		var $button = $(this),
+			$hotspotItems = $hotspots.clone(),
 			$thisHotspot = $(),
 			markup = $('<div><div class="hotspot_container">\n\n</div></div>'),
-
+			$textarea = $('<textarea />'),
 			i;
 
 		for (i = 0; i < $hotspotItems.length; i++) {
@@ -229,7 +230,8 @@ imgkit.hotspot = (function () {
 			markup.find('div').append($thisHotspot);
 		}
 
-		console.log(markup.html());
+		$textarea.val(markup.html());
+		$button.after($textarea);
 
 		return false;
 	}
